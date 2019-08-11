@@ -33,7 +33,9 @@ and usual Kakoune command blocks:
 declare-option str colorscheme_mode 'light'
 define-command switch-colorscheme \
   -docstring 'switch colorscheme between light and dark modes' %{
-    # We need to use quotes here to use expansions
+    # Normal usage of %opt{..} and friends!
+    # Full power of `test(1)`!
+    # Kakoune `%{..}` blocks!
     if "%opt{colorscheme_mode} = light" %{
       colorscheme solarized-dark-termcolors
       powerline-theme solarized-dark-termcolors
@@ -51,8 +53,8 @@ And this is just a simple example...
 
 ## Toolbox
 
-* `if <test> <then-cmd> <else-cmd>`: check if `<test>` results in true (0) or false (1) using `test` and run `<then-cmd>` or `<else-cmd>` accordingly
-* `if-available <executable> <then-cmd> <else-cmd>`: check if `<executable>` exists on the system using `which` and run `<then-cmd>` or `<else-cmd>` accordingly
+* `if <test> <then-cmd> <else-cmd>`: check if `<test>` results in true or false using [`test(1)`](http://man.he.net/?topic=test&section=all) and run `<then-cmd>` or `<else-cmd>` accordingly
+* `if-available <executable> <then-cmd> <else-cmd>`: check if `<executable>` exists on the system using [`which(1)`](http://man.he.net/?topic=which&section=all) and run `<then-cmd>` or `<else-cmd>` accordingly
 * `case-i <value> <pat-1> <cmd-1> ... <pat-n> <cmd-n>`: match `<value>` against `<pat-i>` and run `<cmd-i>` if the match succeeds
   * These are defined for `i = 2, 3, 4, 5`
 
