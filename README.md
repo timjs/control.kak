@@ -1,9 +1,9 @@
 # Get in Control!
 
-This is a plugin for the [Kakoune]() text editor.
+This is a plugin for the [Kakoune](https://kakoune.org) text editor.
 It aims in simplifying Kakoune scripts.
 Kakoune does not have built in capabilities to 
-Because Kakoune does not have built in [control statements]().
+Because Kakoune does not have built in [control statements](https://github.com/mawww/kakoune/issues/2777).
 Users should escape into the shell to use basic control flow, variables, etc.
 This ping-ponging between Kakoune editor commands and Bash control flow can be quite tiresome:
 
