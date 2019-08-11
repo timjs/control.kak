@@ -18,9 +18,9 @@ define-command if \
   -params 3 %{eval %sh{
     if [ $1 ]
     then
-      echo $2
+      echo "$2" | tr "\n" ";"
     else
-      echo $3
+      echo "$3" | tr "\n" ";"
     fi
   }}
 
@@ -28,9 +28,9 @@ define-command if-available \
   -params 3 %{eval %sh{
     if which $1 >/dev/null
     then
-      echo $2
+      echo "$2" | tr "\n" ";"
     else
-      echo $3
+      echo "$3" | tr "\n" ";"
     fi
   }}
 
@@ -38,11 +38,11 @@ define-command case-3 \
   -params 7 %{eval %sh{
     case $1 in
     $2)
-      echo $3;;
+      echo "$3" | tr "\n" ";";;
     $4)
-      echo $5;;
+      echo "$5" | tr "\n" ";";;
     $6)
-      echo $7;;
+      echo "$7" | tr "\n" ";";;
     esac
   }}
 
@@ -61,6 +61,18 @@ define-command example-if-for-kakrc %{
     echo '`kakrc` does not exist in current directory'
   }
 }
+
+declare-option str colorscheme_mode 'light'
+define-command example-switch-colorscheme \
+  -docstring 'switch colorscheme between light and dark modes' %{
+    if "%opt{colorscheme_mode} = light" %{
+      colorscheme solarized-dark-termcolors
+      set-option current colorscheme_mode 'dark'
+    } %{
+      colorscheme solarized-light-termcolors
+      set-option current colorscheme_mode 'light'
+    }
+  }
 
 define-command example-if-for-git %{
   if-available "git" %{
