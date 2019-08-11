@@ -26,6 +26,8 @@ define-command switch-colorscheme \
   }}
 ```
 
+And this is just a simple example...
+
 Using this plugin you can make use of normal `%opt{..}` and `%val{..}` expansions
 and usual Kakoune command blocks:
 
@@ -47,8 +49,6 @@ define-command switch-colorscheme \
     }
   }
 ```
-
-And this is just a simple example...
 
 
 ## Toolbox
